@@ -3,5 +3,6 @@ use_frameworks!
 
 target 'Top News' do
     pod 'SwiftyJSON'
+    pod 'SDWebImage'
     pod 'SwiftLint’
 end

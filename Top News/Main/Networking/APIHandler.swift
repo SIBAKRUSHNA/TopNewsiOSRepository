@@ -2,7 +2,7 @@
 //  APIHandler.swift
 //  Top News
 //
-//  Created by Mobiotics on 03/08/22.
+//  Created by Siba Krushna on 03/08/22.
 //
 
 import UIKit
@@ -16,7 +16,7 @@ class APIHandler: NSObject {
     }
     static let shared = APIHandler()
     public func callNewsAPI(success: @escaping ((NewsResponse) -> Void)) {
-        APIManager.shared.callAPI(endPoint: APIEndPoints.newsList) { response, error in
+        APIManager.shared.callAPI(endPoint: APIEndPoints.newsList, parameter: returnParameter()) { response, error in
             if let response = response {
                 success(NewsResponse(object: response))
             } else {
