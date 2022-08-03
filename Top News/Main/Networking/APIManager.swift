@@ -56,8 +56,12 @@ class APIManager: NSObject {
                 completion?(nil, error)
                 return
             }
-            let jsonDictionary = try JSONSerialization.jsonObject(with: data, options: [])
-            completion?(jsonDictionary, nil)
+            do {
+                let jsonDictionary = try JSONSerialization.jsonObject(with: data, options: [])
+                completion?(jsonDictionary, nil)
+            } catch {
+                completion?(nil, error)
+            }
         }
         task.resume()
     }
