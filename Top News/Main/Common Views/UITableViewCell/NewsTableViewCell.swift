@@ -18,6 +18,7 @@ class NewsTableViewCell: UITableViewCell {
         setUI()
     }
     private func setUI() {
+        selectionStyle = .none
         titleLabel.font = UIFont.systemFont(ofSize: 16)
         titleLabel.textColor = UIColor.black
         authorLabel.font = UIFont.systemFont(ofSize: 14)
@@ -25,7 +26,7 @@ class NewsTableViewCell: UITableViewCell {
         descriptionLabel.font = UIFont.systemFont(ofSize: 12)
         descriptionLabel.textColor = UIColor.black
     }
-    func setData(articleData: Articles) {
+    func setData(_ articleData: Articles) {
         titleLabel.text = articleData.title
         authorLabel.text = articleData.author
         descriptionLabel.text = articleData.descriptionValue
