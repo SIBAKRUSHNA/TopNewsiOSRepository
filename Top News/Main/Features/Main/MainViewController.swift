@@ -15,6 +15,7 @@ class  MainViewController: UIViewController {
         setData()
         callNewsAPI()
         pullToRefresh()
+        setAccessibilityId()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -23,6 +24,9 @@ class  MainViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    private func setAccessibilityId() {
+        newsTableView.accessibilityIdentifier  = "newsTableView"
     }
     private func setData() {
         newsTableView.returnURL = { [weak self] (url) in
