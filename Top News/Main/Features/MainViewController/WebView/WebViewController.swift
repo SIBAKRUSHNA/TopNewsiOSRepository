@@ -2,7 +2,7 @@
 //  WebViewController.swift
 //  Top News
 //
-//  Created by Mobiotics on 04/08/22.
+//  Created by Siba Krushna on 04/08/22.
 //
 
 import UIKit
@@ -39,7 +39,9 @@ class WebViewController: UIViewController {
         webView.bottomAnchor.constraint(equalTo: guide.bottomAnchor).isActive = true
     }
     private func loadWebPage() {
-        guard let url = self.stringUrl, let url = URL(string: url) else { return }
+        guard let url = self.stringUrl, let url = URL(string: url) else {
+            self.stopLoader()
+            return }
         webView.load(URLRequest(url: url))
     }
 }

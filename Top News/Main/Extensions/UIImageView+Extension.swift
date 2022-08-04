@@ -18,7 +18,7 @@ extension UIImageView {
         self.sd_setImage(with: url, placeholderImage: nil, options: sdWebImageOptions) { (_, error, cacheType, _) in
             if let error = error {
                 print(error.localizedDescription)
-            } 
+            }
         }
     }
 }

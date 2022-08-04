@@ -7,18 +7,19 @@
 
 import UIKit
 
-class  MainViewController: BaseViewController {
+class  MainViewController: UIViewController {
     @IBOutlet weak var newsTableView: NewsTableView!
+    private var refreshControl = UIRefreshControl()
     override func viewDidLoad() {
         super.viewDidLoad()
         setData()
         callNewsAPI()
+        pullToRefresh()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
@@ -27,6 +28,15 @@ class  MainViewController: BaseViewController {
         newsTableView.returnURL = { [weak self] (url) in
             self?.openWeb(url)
         }
+    }
+    private func pullToRefresh() {
+        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        refreshControl.addTarget(self, action: #selector(self.refresh(_:)), for: .valueChanged)
+        newsTableView.addSubview(refreshControl)
+    }
+    @objc func refresh(_ sender: AnyObject) {
+        callNewsAPI()
+        refreshControl.endRefreshing() // End Refreshing
     }
     private func callNewsAPI() {
         self.showLoader()

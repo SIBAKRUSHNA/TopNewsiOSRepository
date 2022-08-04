@@ -2,7 +2,7 @@
 //  UIViewController+Extensions.swift
 //  Top News
 //
-//  Created by Mobiotics on 04/08/22.
+//  Created by Siba Krushna on 04/08/22.
 //
 
 import UIKit
